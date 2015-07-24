@@ -1,6 +1,6 @@
 ## makeCacheMatrix accepts a matrix input, the function internals cache the inverse of this matrix
-## cacheSolve solves for the inverted matrix or returns a cached version if the solution exists
-## setting the internal variable of the makeCacheMatrix to do so
+## cacheSolve solves for the inverted matrix or returns a cached version if the solution already exists
+## and sets the internal variable of the makeCacheMatrix to the inverted matrix
 
 makeCacheMatrix <- function(x = matrix()) {
 
