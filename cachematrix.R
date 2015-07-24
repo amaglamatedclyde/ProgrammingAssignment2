@@ -1,6 +1,7 @@
-## makeCacheMatrix accepts a matrix input, the function internals cache the inverse of this matrix
-## cacheSolve solves for the inverted matrix or returns a cached version if the solution already exists
-## and sets the internal variable of the makeCacheMatrix to the inverted matrix
+## makeCacheMatrix() accepts a matrix as an argument. the function internals cache the inverse of this matrix
+## using the companion function, cacheSolve.
+## cacheSolve solves for the inverted matrix or, if the solution already exists, returns a cached version 
+## saved as an internal variable of the makeCacheMatrix function
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -8,7 +9,7 @@ makeCacheMatrix <- function(x = matrix()) {
   identical_input <- FALSE
   
     # getter and setter functions for the input matrix 
-    # tell user when they are passing a matrix identical to the previous one, if so do not invalidate cache.
+    # we tell the user when they are passing a matrix identical to the previous one, and if so, do not invalidate cache.
   set <- function(y) {
     if(identical(x, y)){
       set_identical_input(TRUE)
@@ -24,7 +25,7 @@ makeCacheMatrix <- function(x = matrix()) {
   setinv <- function(x.inverse) inv <<- x.inverse
   getinv <- function() inv
   
-  # setter and getter functions for the identical_input flag. flags when the input matrix is 
+  # setter and getter functions for the identical_input flag. flag is TRUE when the input matrix is 
   # identical to previous one
   set_identical_input <- function(true_false) identical_input <<- true_false
   get_identical_input <- function() identical_input
@@ -34,8 +35,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 cacheSolve <- function(x, ...) {
-  #retrieve the inverted matrix from the makeCacheMatrix object passed to cacheSolve
-  #if the inverse already exists, otherwise solve for it.
+  #retrieve the inverted matrix from the makeCacheMatrix object passed to cacheSolve()
+  #if it exists, otherwise solve for it.
   #tell the user if the cache is being retrieved or when the input matrix is unchanged
   inv <- x$getinv()
   if(x$identical_input() && !is.null(inv)){
